@@ -27,6 +27,7 @@ public class ConsoleUI
             Console.WriteLine("4. Find vehicle");
             Console.WriteLine("5. Vehicle type summary");
             Console.WriteLine("6. Populate garage");
+            Console.WriteLine("7. Search by color");
             Console.WriteLine("0. Exit");
 
             string? choice = Console.ReadLine();
@@ -61,6 +62,10 @@ public class ConsoleUI
                     PopulateGarage();
                     break;
                 
+                case "7":
+                    SearchByColor();
+                    break;
+                
                 
                 
                 
@@ -71,6 +76,21 @@ public class ConsoleUI
                     break;
             }
         }
+    }
+
+    private void SearchByColor()
+    {
+        Console.Write("Color: ");
+        string color = Console.ReadLine()!;
+
+        var vehicles = handler.SearchByColor(color);
+
+        foreach (var vehicle in vehicles)
+        {
+            Console.WriteLine($"{vehicle.RegistrationNumber} {vehicle.Color}");
+        }
+
+        Console.ReadKey();
     }
 
     private void PopulateGarage()

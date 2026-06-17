@@ -68,4 +68,15 @@ public class GarageHandler
         return summary;
     }
     
+    public IEnumerable<Vehicle> SearchByColor(string color)
+    {
+        foreach (var vehicle in garage)
+        {
+            if (vehicle.Color.Equals(color, StringComparison.OrdinalIgnoreCase))
+            {
+                yield return vehicle;
+            }
+        }
+    }
+    
 }
